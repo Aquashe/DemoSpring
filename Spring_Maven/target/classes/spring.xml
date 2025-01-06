@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="alien" class="org.thomas.Alien"  scope="prototype" autowire="byType">
+        <!--
+        Setter Injection - for this concept to make getter and setter for respective properties(variables)
+        1. For primitive values you can use value=""
+        2. For object reference you have to use bean id for ref="", first create the bean and then this
+        -->
+
+        <property name="age" value="21">
+        </property>
+        <property name="com" ref="com1"/>
+
+    </bean>
+    <bean id = "com1" class="org.thomas.Laptop" primary="true">
+        <!-- For intializing paramaterized constructor-->
+
+        <constructor-arg type="String" value="Leonovo" name="name" index="1"/>
+        <constructor-arg type="int" value="1" name ="idNo"/>
+    </bean>
+    <bean id = "desk" class="org.thomas.Desktop" lazy-init="true"/>
+
+</beans>
